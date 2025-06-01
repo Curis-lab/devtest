@@ -1,0 +1,59 @@
+@import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Karla:ital,wght@0,200..800;1,200..800&family=Outfit&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap");
+
+:root {
+  /* Base font size that scales with viewport width */
+  font-size: clamp(14px, 1vw + 0.75rem, 18px);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  font-family: Arial, Helvetica, "Outfit", sans-serif;
+}
+
+@layer components {
+  .caption_label {
+    @apply font-normal text-base md:text-lg leading-relaxed tracking-[-0.32px] align-middle pt-[30px] pb-[53.87px];
+  }
+
+  .tag {
+    @apply w-[5.2625em] h-[2em] mt-[0.25em] ml-[1em] md:ml-[5.0756em] rounded-full bg-[hsla(210,100%,99%,1)] shadow-[0_0.0625em_0.1875em_0_hsla(220,4%,14%,0.16)] text-center font-medium text-sm md:text-base leading-[1.5em] align-middle;
+  }
+
+  .global_icon {
+    @apply p-[1em] rounded-full border border-[hsla(220,7%,92%,1)];
+  }
+}
+
+/* Responsive Typography Utilities */
+@layer utilities {
+  .text-h1 {
+    font-size: clamp(
+      2.8125rem,
+      0.34615384615384626rem + 4.871794871794872vw,
+      4rem
+    );
+  }
+
+  .text-h2 {
+    font-size: clamp(
+      2.25rem,
+      1.7307692307692308rem + 1.0256410256410255vw,
+      2.5rem
+    );
+  }
+
+  .text-h3 {
+    font-size: clamp(
+      1.875rem,
+      0.5769230769230769rem + 2.564102564102564vw,
+      2.5rem
+    );
+  }
+}
