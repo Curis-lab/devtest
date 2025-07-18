@@ -1,11 +1,10 @@
-'use client';
+"use client";
 
 import Button from "@/components/button";
 import Navbar from "@/components/nav";
 import Image from "next/image";
-import {motion} from 'framer-motion';
-
-
+import { motion } from "framer-motion";
+import Link from "next/link";
 const AchieveMENTS = ({ n, label }: { n: string; label: string }) => {
   return (
     <div className="flex flex-col gap-4">
@@ -122,54 +121,87 @@ const BlogContent = ({
 };
 
 export default function Home() {
+  const text = "Hey, I'm Tom. A Product Designer with 9 years of";
   return (
     <main>
       <Navbar />
       <section className="md:px-[150px] py-[72px] px-[16px] flex flex-col gap-[15px] md:gap-[36px]">
-        <motion.h1
-        initial={{opacity: 0, y: 80}}
-        animate={{opacity: 1, y: 0}}
+        <h1 className="max-w-[691px] font-medium text-h1 leading-[83.2px] tracking-[0.92px] align-middle text-[hsla(222,47%,11%,1)]">
+          {text.split(" ").map((ch, idx) => (
+            <motion.span
+              key={idx}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{
+                duration: 0.5,
+                delay: idx * 0.1,
+              }}
+            >
+              {ch}{" "}
+            </motion.span>
+          ))}
+        </h1>
+        <motion.span
         transition={{
-          type: 'spring',
-          stiffness: 40,
-          damping: 25,
-          delay: 1.3,
-          duration: 1.5
+          delay: 1,
+          duration: 0.5
+        }}        
+        initial={{scale: 0, opacity: 0}}
+        animate={{
+          scale:1,
+          opacity:1
         }}
-        className="max-w-[691px] font-medium text-h1 leading-[83.2px] tracking-[0.92px] align-middle text-[hsla(222,47%,11%,1)]">
-          Hey, I&apos;m Tom. A Product Designer with 9 years of{" "}
-          <span className="bg-[hsla(207,66%,92%,1)] rounded-[16px] px-[24px] py-[6.62px]">
-            Experience
-          </span>
-        </motion.h1>
+          className="
+        bg-[hsla(207,66%,92%,1)] rounded-[16px] w-[200px] text-center py-2"
+        >
+          Experience
+        </motion.span>
         <div className="flex md:gap-[71.57px]">
-          <motion.p 
-          initial={{opacity: 0, y: 80}}
-          animate={{opacity: 1, y: 0}}
-          transition={{
-            type: 'spring',
-            stiffness: 40,
-            damping: 25,
-            delay: 1.8,
-            duration: 1.5
-          }}
-          className="font-normal text-[24px] leading-[43.2px] tracking-[-0.48px] align-middle text-[hsla(206,29%,23%,1)] w-[908.43px]">
+          <motion.p
+            initial={{ opacity: 0, y: 80 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              type: "spring",
+              stiffness: 40,
+              damping: 25,
+              delay: 1.8,
+              duration: 1.5,
+            }}
+            className="font-normal text-[24px] leading-[43.2px] tracking-[-0.48px] align-middle text-[hsla(206,29%,23%,1)] w-[908.43px]"
+          >
             The Alpinfluence is a powerful and professional tool for showcasing
             your work online. With a clean and modern design, this template is
             perfect for creative professionals.
           </motion.p>
-          <div className="hidden md:block px-[31px] py-[5.5px] bg-[hsla(210,100%,99%,1)] border border-[hsla(220,7%,92%,1)] rounded-full">
+          <motion.div
+          transition={{
+            delay:2
+          }}
+          initial={{
+            left:-100
+          }}
+            animate={
+              {
+                left:1
+                //start time
+              }
+            }
+            className="hidden md:block px-[31px] py-[5.5px] bg-[hsla(210,100%,99%,1)] border border-[hsla(220,7%,92%,1)] rounded-full"
+          >
             <Image
               src="/assets/global.svg"
               alt="global svg"
               width={75}
               height={56}
             />
-          </div>
+          </motion.div>
         </div>
       </section>
-      <section className="flex flex-col md:flex-row justify-center gap-[106px] px-[16px] md:px-[150px] pt-[26px] md:pt-[144px]">
-        <div className="max-w-[400px] h-[330px] flex flex-col justify-center">
+      <section
+        id="achievements"
+        className="flex flex-col md:flex-row justify-center gap-[106px] px-[16px] md:px-[150px] pt-[26px] md:pt-[144px] h-screen"
+      >
+        <div className="max-w-[400px] flex flex-col justify-center">
           <h3 className="font-medium text-h2 leading-[56px] tracking-[-1.2px] align-middle">
             Achievements in my professional life.
           </h3>
@@ -177,7 +209,14 @@ export default function Home() {
             The Oska Portfolio template is fully responsive, meaning it looks
             great on any device, from desktop computers to smartphones.
           </p>
-          <Button label="Contact me" />
+
+          <Link
+            href="/contact"
+            className="list-none bg-[hsla(207,66%,92%,1)] p-2.5 rounded-full w-[175px] h-[55px] text-[hsla(206,31%,42%,1)] text-lg leading-[160%] font-medium flex justify-center items-center"
+          >
+            Contact me
+          </Link>
+          {/* <Button label="Contact me" /> */}
         </div>
         <div className="hidden md:grid grid-cols-[1fr_2fr] gap-[147px_92.35px]">
           <AchieveMENTS n="70%" label="Job Achievements" />
@@ -186,7 +225,10 @@ export default function Home() {
           <AchieveMENTS n="$8.4M" label="Job Achievements" />
         </div>
       </section>
-      <section className="p-[26px] md:p-[60px] mx-[16px] md:mx-[150px] my-[24px]">
+      <section
+        id="portfolio"
+        className="p-[26px] md:p-[60px] mx-[16px] md:mx-[150px] my-[24px]"
+      >
         <h1 className="font-medium text-h3 leading-[48px] md:w-[1020px] md:h-[144px] mb-[65px]">
           I like Portfolio Page more and more each day because it makes my life
           a lot easier. It fits our needs perfectly. Keep up the excellent work.
@@ -229,7 +271,10 @@ export default function Home() {
       <section className="hidden md:flex justify-center">
         <Button label="Load More" />
       </section>
-      <section className="flex flex-col mx-[16px] md:mx-[150px] md:p-12">
+      <section
+        id="articles"
+        className="flex flex-col mx-[16px] md:mx-[150px] md:p-12 min-h-screen"
+      >
         <div className="gap-[7.86px] mb-10">
           <h1 className="font-medium text-[32px] leading-[40px] tracking-[-0.96px] align-middle">
             Latest Articles
