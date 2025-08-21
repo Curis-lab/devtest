@@ -5,9 +5,12 @@ import Navbar from "@/components/nav";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import style from "./style.module.css";
+import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
+
 const AchieveMENTS = ({ n, label }: { n: string; label: string }) => {
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col items-center justify-center gap-[10px]">
       <p className="font-medium text-[44px] leading-[56px]">{n}</p>
       <p>{label}</p>
     </div>
@@ -16,19 +19,19 @@ const AchieveMENTS = ({ n, label }: { n: string; label: string }) => {
 
 const ProjectContent = () => {
   return (
-    <div className="hidden md:block bg-[hsla(210,100%,99%,1)] p-3">
-      <div className="flex justify-between items-center p-12">
-        <div>
+    <div className="hidden md:block bg-[hsla(210,100%,99%,1)] p-3 max-w-[50%]">
+      <div className="relative flex justify-between items-center p-12">
+        <div className="flex flex-col gap-2">
           <h1 className="font-medium text-[32px] leading-[40px] tracking-[-0.96px] align-middle">
             Raze
           </h1>
-          <p className="caption_label w-[536.54px]">
+          <p className="text-justify">
             Our design team helps clients achieve their marketing and business
             goals through user-friendly, engaging target branding that appeals
             to a website.
           </p>
         </div>
-        <div className="p-4 rounded-full border border-[hsla(220,7%,92%,1)]">
+        <div className="absolute z-10 right-0  top-0 p-4 rounded-full border-3 border-[hsla(220,7%,92%,1)]">
           <Image
             src="/assets/vector.svg"
             height={12.24}
@@ -46,25 +49,26 @@ const ProjectContent = () => {
 
 const ProjectInfo = () => {
   return (
-    <div className=" md:p-3 bg-[hsla(210,100%,99%,1)] h-[635.89px]">
-      <div className="md:w-[157.84px] h-[76.79px] flex items-center justify-center bg-[hsla(210,100%,99%,1)] rounded-[50px] p-2.5 my-12 mx-auto">
+    <div className="p-1 md:p-5 bg-[hsla(210,100%,99%,1)] min-h-[635.89px]">
+
+      <div className="flex justify-center">
         <Image
-          width={64.93}
-          height={25.84}
-          src="/assets/global.svg"
-          alt="global"
-        />
+        width={64.93}
+        height={25.84}
+        src="/assets/global.svg"
+        alt="global"
+      />
       </div>
 
       <div
         className="bg-[hsla(240,7%,97%,1)] flex flex-col md:p-3 items-center gap-1.25 h-full"
         style={{ display: "inline" }}
       >
-        <div className="justify-center">
+        <div className="flex flex-col items-center gap-[15px]">
           <h1 className="font-medium text-[24px] leading-[32px] tracking-[-0.72px] text-center align-middle max-w-[264.47px]">
             Project was about precision and information. That’s all! Graphic
           </h1>
-          <div className="flex">
+          <div className="flex justify-evenly">
             <div className="tag">Design</div>
             <div className="tag">Branding</div>
             <div className="tag">UI/UX </div>
@@ -75,17 +79,16 @@ const ProjectInfo = () => {
           <p className="caption_label">
             The service was excellent. Template example is the next killer app.
           </p>
-          <div className="flex gap-4">
+          <div className="flex gap-4 items-center">
             <Image
               src="/assets/profile.png"
               alt="profile"
               width={40}
               height={40}
-              objectFit="cover"
             />
             <div>
-              <p>Jeremy Douglas</p>
-              <p>UI & UX designer</p>
+              <p>Jeeremy Douglas</p>
+              <p className="text-[15px]">UI & UX designer</p>
             </div>
           </div>
         </div>
@@ -142,15 +145,15 @@ export default function Home() {
           ))}
         </h1>
         <motion.span
-        transition={{
-          delay: 1,
-          duration: 0.5
-        }}        
-        initial={{scale: 0, opacity: 0}}
-        animate={{
-          scale:1,
-          opacity:1
-        }}
+          transition={{
+            delay: 1,
+            duration: 0.5,
+          }}
+          initial={{ scale: 0, opacity: 0 }}
+          animate={{
+            scale: 1,
+            opacity: 1,
+          }}
           className="
         bg-[hsla(207,66%,92%,1)] rounded-[16px] w-[200px] text-center py-2"
         >
@@ -174,18 +177,16 @@ export default function Home() {
             perfect for creative professionals.
           </motion.p>
           <motion.div
-          transition={{
-            delay:2
-          }}
-          initial={{
-            left:-100
-          }}
-            animate={
-              {
-                left:1
-                //start time
-              }
-            }
+            transition={{
+              delay: 2,
+            }}
+            initial={{
+              left: -100,
+            }}
+            animate={{
+              left: 1,
+              //start time
+            }}
             className="hidden md:block px-[31px] py-[5.5px] bg-[hsla(210,100%,99%,1)] border border-[hsla(220,7%,92%,1)] rounded-full"
           >
             <Image
@@ -199,64 +200,74 @@ export default function Home() {
       </section>
       <section
         id="achievements"
-        className="flex flex-col md:flex-row justify-center gap-[106px] px-[16px] md:px-[150px] pt-[26px] md:pt-[144px] h-screen"
+        className="flex flex-col md:flex-row justify-center items-center px-[16px] md:px-[100px] h-screen"
       >
-        <div className="max-w-[400px] flex flex-col justify-center">
-          <h3 className="font-medium text-h2 leading-[56px] tracking-[-1.2px] align-middle">
-            Achievements in my professional life.
-          </h3>
-          <p className="caption_label">
-            The Oska Portfolio template is fully responsive, meaning it looks
-            great on any device, from desktop computers to smartphones.
-          </p>
-
+        <div className="flex flex-col justify-between m-auto min-w-[50%] h-[50%] md:p-[3%]  ">
+          <div className="flex flex-col gap-[10px] md:gap-[12px]">
+            <h3 className="font-medium text-h2 leading-[56px] tracking-[-1.2px]">
+              Achievements in my professional life.
+            </h3>
+            <p className="text-justify tracking-[1.5px]">
+              The Oska Portfolio template is fully responsive, meaning it looks
+              great on any device, from desktop computers to smartphones.
+            </p>
+          </div>
           <Link
             href="/contact"
-            className="list-none bg-[hsla(207,66%,92%,1)] p-2.5 rounded-full w-[175px] h-[55px] text-[hsla(206,31%,42%,1)] text-lg leading-[160%] font-medium flex justify-center items-center"
+            className="list-none bg-[hsla(207,66%,92%,1)] p-2.5 rounded-full w-[175px] h-[55px] text-[hsla(206,31%,42%,1)] text-lg tracking-[1.2px] font-medium flex justify-center items-center"
           >
             Contact me
           </Link>
-          {/* <Button label="Contact me" /> */}
         </div>
-        <div className="hidden md:grid grid-cols-[1fr_2fr] gap-[147px_92.35px]">
+        <div className={style.achieve_point}>
           <AchieveMENTS n="70%" label="Job Achievements" />
           <AchieveMENTS n="+24" label="Job Achievements" />
           <AchieveMENTS n="1.6K" label="Job Achievements" />
           <AchieveMENTS n="$8.4M" label="Job Achievements" />
         </div>
       </section>
+      {/* just adjust layout */}
       <section
         id="portfolio"
-        className="p-[26px] md:p-[60px] mx-[16px] md:mx-[150px] my-[24px]"
+        className="p-[26px] lg:p-[60px] mx-[16px] lg:mx-[150px] my-[24px]"
       >
-        <h1 className="font-medium text-h3 leading-[48px] md:w-[1020px] md:h-[144px] mb-[65px]">
-          I like Portfolio Page more and more each day because it makes my life
-          a lot easier. It fits our needs perfectly. Keep up the excellent work.
-        </h1>
-        <div className="flex justify-between items-center">
-          <div className="flex">
-            <Image
-              src="/assets/profile.png"
-              alt="profile"
-              width={84}
-              height={72}
-            />
-            <div className="flex flex-col">
-              <p className="font-medium text-[24px] leading-[32px] tracking-[-0.72px]">
-                John Smith{" "}
-              </p>
-              <p className="font-normal text-[14px] leading-[24px]">
-                UI & UX Designer
-              </p>
+        <div>
+          <p className="font-medium text-h3 lg:leading-[60px] text-justify mb-[15px]">
+            I like Portfolio Page more and more each day because it makes my
+            life a lot easier. It fits our needs perfectly. Keep up the
+            excellent work.
+          </p>
+          <div className="flex justify-between items-center">
+            <div className="flex p-2 items-center">
+              <Image
+                src="/assets/profile.png"
+                alt="profile"
+                width={84}
+                height={72}
+              />
+              <div className="flex flex-col">
+                <p className="font-medium text-[24px] leading-[32px] tracking-[-0.72px]">
+                  John Smith{" "}
+                </p>
+                <p className="font-normal text-[14px] leading-[24px]">
+                  UI & UX Designer
+                </p>
+              </div>
             </div>
-          </div>
-          <div className="flex">
-            <div>prv </div>
-            <div>next</div>
+            <div className="flex gap-[10px]">
+              <FaArrowLeft
+                size={30}
+                className="rounded-full border-2 box-content p-[5px]"
+              />
+              <FaArrowRight
+                size={30}
+                className="rounded-full border-2 box-content p-[5px]"
+              />
+            </div>
           </div>
         </div>
       </section>
-      <section className="flex px-[16px] md:px-[150px]">
+      <section className="flex px-[16px] md:px-[150px] py-1 gap-[10px]">
         <ProjectContent />
         <ProjectInfo />
       </section>
